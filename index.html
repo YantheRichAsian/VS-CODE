@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio · Design Evolution</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════ -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <span class="nav__logo">Portfolio</span>
+      <ul class="nav__links">
+        <li><a href="#era-1">初笔</a></li>
+        <li><a href="#era-2">破界</a></li>
+        <li><a href="#era-3">锋芒</a></li>
+        <li><a href="#era-4">业余创作</a></li>
+        <li><a href="#contact" class="nav__cta">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
+  <header class="hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow">Visual Designer · Muar, Malaysia</p>
+      <h1 class="hero__title">
+        Design is how<br />
+        I speak to<br />
+        <em>the world.</em>
+      </h1>
+      <p class="hero__sub">
+        从印刷车间的第一张稿件，到舞台上的 LED 巨幕，<br />
+        再到每一张触动人心的社媒内容——<br />
+        我用视觉叙事，为品牌找到它应有的声音。
+      </p>
+      <a href="#era-1" class="hero__scroll">
+        <span>探索作品</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M8 3v10M3 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+    <!-- Timeline indicator -->
+    <div class="hero__timeline">
+      <div class="timeline-dot active" data-era="01"></div>
+      <div class="timeline-line"></div>
+      <div class="timeline-dot" data-era="02"></div>
+      <div class="timeline-line"></div>
+      <div class="timeline-dot" data-era="03"></div>
+      <div class="timeline-line"></div>
+      <div class="timeline-dot" data-era="04"></div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════
+       EVOLUTION STRIP
+  ═══════════════════════════════════════ -->
+  <section class="evolution">
+    <div class="evolution__inner">
+      <div class="evolution__item">
+        <span class="evolution__num">01</span>
+        <span class="evolution__zh">初笔</span>
+        <span class="evolution__en">The First Mark</span>
+      </div>
+      <div class="evolution__arrow">→</div>
+      <div class="evolution__item">
+        <span class="evolution__num">02</span>
+        <span class="evolution__zh">破界</span>
+        <span class="evolution__en">Beyond the Page</span>
+      </div>
+      <div class="evolution__arrow">→</div>
+      <div class="evolution__item">
+        <span class="evolution__num">03</span>
+        <span class="evolution__zh">锋芒</span>
+        <span class="evolution__en">Sharp Edge</span>
+      </div>
+      <div class="evolution__arrow">→</div>
+      <div class="evolution__item">
+        <span class="evolution__num">04</span>
+        <span class="evolution__zh">业余创作</span>
+        <span class="evolution__en">Personal Works</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       ERA 1 — 初笔 · THE FIRST MARK
+  ═══════════════════════════════════════ -->
+  <section class="era" id="era-1">
+    <div class="era__header">
+      <div class="era__meta">
+        <span class="era__num">01</span>
+        <span class="era__context">印刷公司时期 · Print Studio Era</span>
+      </div>
+      <h2 class="era__title">初笔<br /><span>The First Mark</span></h2>
+      <p class="era__desc">
+        这是一切的起点。受委于一家以委内瑞拉蛋糕为主题的甜品品牌，完成了从 Logo 造型到贴纸视觉的完整品牌识别设计。设计语言以简洁、时髦为核心——没有多余的装饰，只有最精准的形与色。
+      </p>
+      <p class="era__desc era__desc--en">
+        Commissioned for a Venezuelan-inspired pudding cake brand, I developed a complete brand identity — from logo mark to sticker visuals. The design language was deliberate: clean, contemporary, with nothing superfluous.
+      </p>
+      <div class="era__tags">
+        <span class="tag">Brand Identity</span>
+        <span class="tag">Logo Design</span>
+        <span class="tag">Print</span>
+        <span class="tag">Sticker Design</span>
+      </div>
+    </div>
+
+    <div class="era__grid era__grid--4">
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p1/Portfolio pudding cake-01.jpg"
+               alt="Pudding Cake Logo Main Visual"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label">Logo 主视觉</span>
+          <span class="card__num">01 / 04</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p1/Portfolio pudding cake-02.jpg"
+               alt="Pudding Cake Sticker Design"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label">贴纸效果图</span>
+          <span class="card__num">02 / 04</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p1/Portfolio pudding cake-03.jpg"
+               alt="Pudding Cake Application"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label">应用展示</span>
+          <span class="card__num">03 / 04</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p1/Portfolio pudding cake-04.jpg"
+               alt="Pudding Cake Detail"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label">细节 / 变体</span>
+          <span class="card__num">04 / 04</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       ERA 2 — 破界 · BEYOND THE PAGE
+  ═══════════════════════════════════════ -->
+  <section class="era era--alt" id="era-2">
+    <div class="era__header">
+      <div class="era__meta">
+        <span class="era__num">02</span>
+        <span class="era__context">保健公司时期 · Wellness Company Era</span>
+      </div>
+      <h2 class="era__title">破界<br /><span>Beyond the Page</span></h2>
+      <p class="era__desc">
+        当设计从纸张走向舞台，一切都不同了。为炳翰保健公司30周年庆典，独立完成活动全套视觉系统——LED 大屏幕横幅、活动专属 Logo、现场 Photobooth 布景板。与此同时，主导品牌社群媒体内容运营，从品牌视觉识别设计到每周内容发布，全程一手包办。
+      </p>
+      <p class="era__desc era__desc--en">
+        When design steps off the page and onto the stage, everything changes. For Bing Han's 30th anniversary, I delivered a complete event visual system — and took full ownership of the brand's social media content operation, from visual identity design to weekly content publishing.
+      </p>
+      <div class="era__tags">
+        <span class="tag">Event Design</span>
+        <span class="tag">LED Visual</span>
+        <span class="tag">Large Format</span>
+        <span class="tag">Brand Identity</span>
+        <span class="tag">Social Media Management</span>
+        <span class="tag">Content Operation</span>
+      </div>
+    </div>
+
+    <!-- Sub-project A: Anniversary -->
+    <div class="era__subheading">
+      <span>A — Bing Han 30th Anniversary</span>
+    </div>
+    <div class="era__grid era__grid--3">
+      <div class="card card--wide">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p2/Bing Han 30th Anniversary/Led Screen presentation Design/3499 x 1080-01.png"
+               alt="LED Screen Banner Design"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label">LED 大屏幕横幅 · 3499 × 1080px</span>
+          <span class="card__num">Event Visual</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p2/Bing Han 30th Anniversary/Led Screen presentation Design/LED Screen Logo-01.png"
+               alt="Event Logo"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label">活动专属 Logo</span>
+          <span class="card__num">Brand Mark</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p2/Bing Han 30th Anniversary/Photobooth Design/布景板-01-01.jpg"
+               alt="Photobooth Backdrop"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label">Photobooth 布景板</span>
+          <span class="card__num">Large Format Print</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-project B: Social Media Carousel + Facebook CTA -->
+    <div class="era__subheading era__subheading--flex">
+      <span>B — Social Media Content Operation · 品牌视觉识别 &amp; 社群运营</span>
+      <a href="https://www.facebook.com/profile.php?id=100085576548294"
+         class="fb-btn"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="View Live Facebook Page">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+        <span>View Live Facebook Page</span>
+        <span class="fb-btn__arrow">↗</span>
+      </a>
+    </div>
+
+    <!-- Horizontal Scroll Carousel -->
+    <div class="carousel-wrap">
+      <div class="carousel" role="region" aria-label="Social Media Posts Carousel">
+
+        <div class="carousel-slide">
+          <div class="carousel-img-wrap">
+            <img src="../../assets/portfolio/p2/Social Media Post/1.jpg"
+                 alt="Social Media Post 01"
+                 loading="lazy"
+                 onerror="this.parentElement.classList.add('carousel-img-wrap--placeholder')" />
+          </div>
+          <div class="carousel-info">
+            <span class="carousel-label">社媒内容 · 01</span>
+            <span class="carousel-num">01 / 05</span>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="carousel-img-wrap">
+            <img src="../../assets/portfolio/p2/Social Media Post/2.jpeg"
+                 alt="Social Media Post 02"
+                 loading="lazy"
+                 onerror="this.parentElement.classList.add('carousel-img-wrap--placeholder')" />
+          </div>
+          <div class="carousel-info">
+            <span class="carousel-label">社媒内容 · 02</span>
+            <span class="carousel-num">02 / 05</span>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="carousel-img-wrap">
+            <img src="../../assets/portfolio/p2/Social Media Post/3.jpeg"
+                 alt="Social Media Post 03"
+                 loading="lazy"
+                 onerror="this.parentElement.classList.add('carousel-img-wrap--placeholder')" />
+          </div>
+          <div class="carousel-info">
+            <span class="carousel-label">社媒内容 · 03</span>
+            <span class="carousel-num">03 / 05</span>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="carousel-img-wrap">
+            <img src="../../assets/portfolio/p2/Social Media Post/4.jpeg"
+                 alt="Social Media Post 04"
+                 loading="lazy"
+                 onerror="this.parentElement.classList.add('carousel-img-wrap--placeholder')" />
+          </div>
+          <div class="carousel-info">
+            <span class="carousel-label">社媒内容 · 04</span>
+            <span class="carousel-num">04 / 05</span>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="carousel-img-wrap">
+            <img src="../../assets/portfolio/p2/Social Media Post/5.jpeg"
+                 alt="Social Media Post 05"
+                 loading="lazy"
+                 onerror="this.parentElement.classList.add('carousel-img-wrap--placeholder')" />
+          </div>
+          <div class="carousel-info">
+            <span class="carousel-label">社媒内容 · 05</span>
+            <span class="carousel-num">05 / 05</span>
+          </div>
+        </div>
+
+      </div>
+      <!-- Scroll hint -->
+      <p class="carousel-hint">← 左右滑动查看更多 · Swipe to explore →</p>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       ERA 3 — 锋芒 · SHARP EDGE
+  ═══════════════════════════════════════ -->
+  <section class="era" id="era-3">
+    <div class="era__header">
+      <div class="era__meta">
+        <span class="era__num">03</span>
+        <span class="era__context">金融行业时期 · Financial Services Era</span>
+      </div>
+      <h2 class="era__title">锋芒<br /><span>Sharp Edge</span></h2>
+      <p class="era__desc">
+        在最难开口的话题上，设计必须更有力量。为金融贷款品牌构建完整社媒内容矩阵——情绪共鸣、教育科普、产品转化，三层并进。超过50件作品，每一张都在做同一件事：用设计建立信任，用内容推动行动。
+      </p>
+      <p class="era__desc era__desc--en">
+        When the subject is difficult, design must work harder. I built a comprehensive social media content matrix spanning emotional resonance, education, and conversion — over 50 pieces, each building trust through design and driving action through content.
+      </p>
+      <div class="era__tags">
+        <span class="tag">Content Strategy</span>
+        <span class="tag">Social Media</span>
+        <span class="tag">Financial Design</span>
+        <span class="tag">Short-form Video</span>
+        <span class="tag">Local Market</span>
+      </div>
+    </div>
+
+    <!-- Sub-project A: Social Media Matrix -->
+    <div class="era__subheading">
+      <span>A — Financial Services Social Media Matrix</span>
+    </div>
+
+    <!-- Content Layer Labels -->
+    <div class="content-layers">
+      <div class="layer">
+        <span class="layer__dot layer__dot--1"></span>
+        <div>
+          <strong>情绪共鸣层</strong>
+          <p>Emotional Resonance — 财务压力 · 家庭困境</p>
+        </div>
+      </div>
+      <div class="layer">
+        <span class="layer__dot layer__dot--2"></span>
+        <div>
+          <strong>教育科普层</strong>
+          <p>Education — 防诈骗指南 · 贷款流程</p>
+        </div>
+      </div>
+      <div class="layer">
+        <span class="layer__dot layer__dot--3"></span>
+        <div>
+          <strong>产品转化层</strong>
+          <p>Conversion — 合法贷款 · 抵押方案</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="era__grid era__grid--4">
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p3/Social Media Post/压力源于资金不足-01-01.jpg"
+               alt="Financial Stress Post"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label card__label--layer1">情绪共鸣 · 资金压力</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p3/Social Media Post/才出粮就没钱-01.jpg"
+               alt="Paycheck to Paycheck Post"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label card__label--layer1">情绪共鸣 · 月光族</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p3/Social Media Post/提防诈骗-01.jpg"
+               alt="Anti-Scam Education Post"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label card__label--layer2">教育科普 · 防诈骗</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p3/Social Media Post/贷款程序-01.jpg"
+               alt="Loan Process Post"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label card__label--layer2">教育科普 · 贷款程序</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p3/Social Media Post/正规合法贷款-01.jpg"
+               alt="Legal Loan Post"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label card__label--layer3">产品转化 · 合法贷款</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p3/Social Media Post/麻坡top1合法贷款-09.jpg"
+               alt="Muar Top 1 Loan Post"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label card__label--layer3">产品转化 · 麻坡 Top 1</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p3/Social Media Post/房子抵押贷款系列-01.jpg"
+               alt="Mortgage Loan Post"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label card__label--layer3">产品转化 · 房屋抵押</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p3/Social Media Post/创业梦叮咚-01.jpg"
+               alt="Entrepreneurship Dream Post"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label card__label--layer1">情绪共鸣 · 创业梦</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-project B: Short-form Video Matrix (3 YouTube + 1 TikTok) -->
+    <div class="era__subheading">
+      <span>B — Short-form Video · Multi-Platform Matrix</span>
+    </div>
+    <div class="shorts-grid">
+
+      <!-- YouTube Short 01 -->
+      <a class="shorts-item shorts-item--link"
+         href="https://www.youtube.com/shorts/OzAQCE-EINQ"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Watch YouTube Short 01">
+        <div class="shorts-frame">
+          <img src="../../assets/portfolio/p3/Shorts Cover/Cover Pic For link 1.jpg"
+               alt="YouTube Short 01 Cover"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('shorts-frame--placeholder')" />
+          <div class="shorts-play">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+          <div class="shorts-badge shorts-badge--yt">YouTube</div>
+        </div>
+        <div class="shorts-info">
+          <span class="shorts-label">Short · 01</span>
+          <span class="shorts-cta">Watch ↗</span>
+        </div>
+      </a>
+
+      <!-- YouTube Short 02 -->
+      <a class="shorts-item shorts-item--link"
+         href="https://www.youtube.com/shorts/XDJvFCyjBCs"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Watch YouTube Short 02">
+        <div class="shorts-frame">
+          <img src="../../assets/portfolio/p3/Shorts Cover/Cover Pic For link 2.jpg"
+               alt="YouTube Short 02 Cover"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('shorts-frame--placeholder')" />
+          <div class="shorts-play">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+          <div class="shorts-badge shorts-badge--yt">YouTube</div>
+        </div>
+        <div class="shorts-info">
+          <span class="shorts-label">Short · 02</span>
+          <span class="shorts-cta">Watch ↗</span>
+        </div>
+      </a>
+
+      <!-- YouTube Short 03 -->
+      <a class="shorts-item shorts-item--link"
+         href="https://www.youtube.com/shorts/urLWPXKxaZw"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Watch YouTube Short 03">
+        <div class="shorts-frame">
+          <img src="../../assets/portfolio/p3/Shorts Cover/Cover Pic For link 3.jpg"
+               alt="YouTube Short 03 Cover"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('shorts-frame--placeholder')" />
+          <div class="shorts-play">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+          <div class="shorts-badge shorts-badge--yt">YouTube</div>
+        </div>
+        <div class="shorts-info">
+          <span class="shorts-label">Short · 03</span>
+          <span class="shorts-cta">Watch ↗</span>
+        </div>
+      </a>
+
+      <!-- TikTok — 压轴第4格 -->
+      <a class="shorts-item shorts-item--link shorts-item--tiktok"
+         href="https://www.tiktok.com/@911_loan_consultancy"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Visit TikTok Page">
+        <div class="shorts-frame shorts-frame--tiktok">
+          <div class="tiktok-cover">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
+            </svg>
+            <p class="tiktok-cover__text">Explore more on TikTok</p>
+            <p class="tiktok-cover__handle">@911_loan_consultancy</p>
+          </div>
+          <div class="shorts-badge shorts-badge--tt">TikTok</div>
+        </div>
+        <div class="shorts-info">
+          <span class="shorts-label">TikTok · 主页</span>
+          <span class="shorts-cta">Follow ↗</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Stats bar -->
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat__num">50+</span>
+        <span class="stat__label">Social Media Posts</span>
+      </div>
+      <div class="stat__divider"></div>
+      <div class="stat">
+        <span class="stat__num">3</span>
+        <span class="stat__label">Content Layers</span>
+      </div>
+      <div class="stat__divider"></div>
+      <div class="stat">
+        <span class="stat__num">3</span>
+        <span class="stat__label">YouTube Shorts</span>
+      </div>
+      <div class="stat__divider"></div>
+      <div class="stat">
+        <span class="stat__num">1</span>
+        <span class="stat__label">Local Market · Muar</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       ERA 4 — 业余创作 · PERSONAL WORKS
+  ═══════════════════════════════════════ -->
+  <section class="era era--alt" id="era-4">
+    <div class="era__header">
+      <div class="era__meta">
+        <span class="era__num">04</span>
+        <span class="era__context">个人自由创作 · Personal Creative Works</span>
+      </div>
+      <h2 class="era__title">业余创作<br /><span>Personal Works</span></h2>
+      <p class="era__desc">
+        工作之外，设计从未停歇。这些是我在业余时间为不同客户完成的自由接案作品——从补习班的品牌视觉到课本封面，每一件都是真实需求下的真实解答。
+      </p>
+      <p class="era__desc era__desc--en">
+        Design doesn't stop after hours. These are freelance projects completed outside of work — from tuition centre branding to textbook covers. Real briefs, real solutions, real craft.
+      </p>
+      <div class="era__tags">
+        <span class="tag">Freelance</span>
+        <span class="tag">Education Design</span>
+        <span class="tag">Branding</span>
+        <span class="tag">Print</span>
+        <span class="tag">Social Media</span>
+      </div>
+    </div>
+
+    <!-- Row 1: 按摩院设计 (4 cards) -->
+    <div class="era__subheading">
+      <span>A — 按摩院品牌视觉 · Massage Parlour Branding</span>
+    </div>
+    <div class="era__grid era__grid--4">
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p4/业余设计/按摩服务menu.jpg"
+               alt="Massage Service Menu Design"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label">服务菜单设计</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p4/业余设计/按摩院8.8 配套传单 Front.jpg"
+               alt="Massage Promo Flyer Front"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label">8.8 配套传单 · 正面</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p4/业余设计/按摩院8.8 配套传单 Back.jpg"
+               alt="Massage Promo Flyer Back"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label">8.8 配套传单 · 背面</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p4/业余设计/按摩院开业邀请函.jpg"
+               alt="Massage Parlour Opening Invitation"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label">开业邀请函</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: 补习班设计 (4 cards) -->
+    <div class="era__subheading">
+      <span>B — 补习班品牌视觉 · Tuition Centre Branding</span>
+    </div>
+    <div class="era__grid era__grid--4">
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p4/业余设计/补习班 11月海报-社媒Post 02.jpg"
+               alt="Tuition Centre November Poster 02"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label">11月海报 · 社媒 01</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p4/业余设计/补习班 11月海报-社媒Post 03.jpg"
+               alt="Tuition Centre November Poster 03"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label">11月海报 · 社媒 02</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p4/业余设计/补习班社媒Post.jpg"
+               alt="Tuition Centre Social Media Post"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label">社媒内容贴文</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__img-wrap">
+          <img src="../../assets/portfolio/p4/业余设计/门口布条-01.jpg"
+               alt="Tuition Centre Entrance Banner"
+               loading="lazy"
+               onerror="this.parentElement.classList.add('card__img-wrap--placeholder')" />
+        </div>
+        <div class="card__info">
+          <span class="card__label">门口布条设计</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       CLOSING / CONTACT
+  ═══════════════════════════════════════ -->
+  <footer class="footer" id="contact">
+    <div class="footer__inner">
+      <p class="footer__eyebrow">四个时期 · 一条成长轨迹</p>
+      <h2 class="footer__title">
+        造型者 → 执行者 → 叙事者 → 创作者
+      </h2>
+      <p class="footer__sub">
+        Four eras. Four visual languages —<br />
+        the precision of print, the scale of the stage,<br />
+        the warmth of content, the freedom of personal craft.
+      </p>
+      <div class="footer__tools">
+        <span>Adobe Photoshop</span>
+        <span>·</span>
+        <span>Adobe Illustrator</span>
+        <span>·</span>
+        <span>Canva</span>
+        <span>·</span>
+        <span>CapCut</span>
+        <span>·</span>
+        <span>Muar, Malaysia</span>
+      </div>
+
+      <!-- Contact Buttons -->
+      <div class="footer__contact">
+        <a href="https://wa.me/601169281341" class="contact-btn contact-btn--wa" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          <span>WhatsApp</span>
+        </a>
+        <a href="mailto:yan199771@gmail.com" class="contact-btn contact-btn--email">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+          <span>Email</span>
+        </a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 · Portfolio · All Rights Reserved</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
