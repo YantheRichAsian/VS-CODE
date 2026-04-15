@@ -36,10 +36,29 @@
             background: var(--accent) !important; border-radius: 20px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 1;
         }
-        .lang-control.is-en .lang-dot { left: 66px; }
-        .lang-option { flex: 1; text-align: center; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #888; z-index: 2; }
-        .lang-control:not(.is-en) .lang-option:first-child, .lang-control.is-en .lang-option:last-child { color: #ffffff !important; }
-        .lang-en { display: none; }
+        /* 1. 初始状态：中文按钮文字强制变白 */
+.lang-control:not(.is-en) .lang-option .lang-zh {
+    color: #ffffff !important;
+    display: inline-block !important; /* 确保它不换行 */
+}
+
+/* 2. 英文模式状态：英文按钮文字强制变白 */
+.lang-control.is-en .lang-option .lang-en {
+    color: #ffffff !important;
+    display: inline-block !important;
+}
+
+/* 3. 没被选中的文字颜色（变灰） */
+.lang-control.is-en .lang-option .lang-zh,
+.lang-control:not(.is-en) .lang-option .lang-en {
+    color: #888888 !important;
+}
+
+/* 4. 按钮内部文字的基础保护，防止被 block 撑开 */
+.lang-option span {
+    background: transparent !important;
+    border: none !important;
+}
 
         /* 🏗️ 布局比例：左边拉宽 */
         .main-wrapper { max-width: 1200px; margin: 0 auto; padding: 20px; }
@@ -54,6 +73,23 @@
             transition: var(--transition);
         }
         .card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.05); }
+
+                /* 中文名：保持 h1 */
+.lang-zh h1 { 
+    font-size: 32px; 
+    font-weight: 900; 
+    letter-spacing: 6px; 
+    margin-bottom: 10px; 
+}
+
+/* 英文名：专门用 h2，调整为你想要的 20px */
+.lang-en h2 { 
+    font-size: 20px; 
+    font-weight: 900; 
+    margin-top: 5px;      /* 调这个数字控制名字上下位置 */
+    margin-bottom: 15px;   /* 调这个数字控制名字与按钮的距离 */
+    display: block;       /* 确保它是块级元素 */
+}
 
         /* 👤 个人信息区 */
         .profile-box { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
@@ -85,8 +121,36 @@
         .edu-degree { font-size: 14px; color: var(--accent); font-weight: 700; margin-top: 5px; display: block; }
 
         /* 通用标题 */
-        h2 { font-size: 20px; font-weight: 800; margin-bottom: 30px; display: flex; align-items: center; }
-        h2::after { content: ''; height: 2px; flex: 1; background: linear-gradient(to right, var(--accent), transparent); margin-left: 15px; }
+        /* 1. 专门给下方“工作经历”等大标题用的（保留线条） */
+.content-main h2 {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.content-main h2::after {
+    content: '';
+    height: 2px;
+    flex: 1;
+    background: linear-gradient(to right, var(--accent), transparent);
+}
+
+/* 2. 专门给你左侧“英文名字”用的（彻底去掉线条） */
+.lang-en h2 {
+    display: block;        /* 关键：取消 flex 布局，线条就失去了生存空间 */
+    font-size: 20px;       /* 你调好的 20px */
+    font-weight: 900;
+    margin-top: 5px;       /* 调整名字上方间距 */
+    margin-bottom: 15px;   /* 调整名字下方间距 */
+}
+
+.lang-en h2::after {
+    display: none !important; /* 强制让名字后面的线条消失 */
+    content: none !important;
+}
 
         .item { margin-bottom: 35px; padding-left: 20px; border-left: 2px solid #f0f0f0; }
         .item b { font-size: 17px; display: block; margin-bottom: 8px; }
@@ -105,14 +169,107 @@
         .btn-wa { background: var(--brand-pop); color: white; }
         .btn-mail { background: var(--text-main); color: white; }
         .btn-behance { background: white; color: var(--text-main); border: 1px solid #ddd; }
+        
+/* 让色块移动 */
+.lang-control.is-en .lang-dot { 
+    transform: translateX(66px) !important; /* 强制位移 */
+}
+
+/* 默认状态：中文白，英文灰 */
+.lang-control .btn-zh-text { color: #ffffff !important; }
+.lang-control .btn-en-text { color: #888888 !important; }
+
+/* 英文状态：中文灰，英文白 */
+.lang-control.is-en .btn-zh-text { color: #888888 !important; }
+.lang-control.is-en .btn-en-text { color: #ffffff !important; }
+
+/* 确保按钮文字永远可见 */
+.btn-zh-text, .btn-en-text {
+    display: inline-block !important;
+    position: relative;
+    z-index: 5;
+}
+/* 确保按钮容器是横向平分的 */
+.lang-control {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-around !important; /* 让中/EN平分空间 */
+    padding: 0 !important;
+}
+
+.lang-option {
+    flex: 1 !important;
+    display: flex !important;
+    justify-content: center !important; /* 文字水平居中 */
+    align-items: center !important;     /* 文字垂直居中 */
+    height: 100% !important;
+    z-index: 5 !important;
+    cursor: pointer;
+}
+
+/* 按钮文字基础样式 */
+.btn-text {
+    color: #888 !important; /* 默认灰色 */
+    font-size: 11px;
+    font-weight: 800;
+    display: inline-block !important;
+}
+
+/* 状态 1：中文模式 (没有 .is-en 时) */
+.lang-control:not(.is-en) .lang-option:first-of-type .btn-text {
+    color: #ffffff !important;
+}
+
+/* 状态 2：英文模式 (有 .is-en 时) */
+.lang-control.is-en .lang-option:last-of-type .btn-text {
+    color: #ffffff !important;
+}
+
+/* 底部线指令（你需要的） */
+.line-bottom {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    display: block;
+}
+        /* 基础文字样式：默认灰色 */
+.t-zh, .t-en {
+    font-style: normal;
+    color: #888 !important; /* 没选中的时候强制灰色 */
+    transition: color 0.3s;
+    z-index: 10 !important;
+    position: relative;
+}
+
+/* 状态：当没有 .is-en 时（中文模式），强制让 t-zh 变白 */
+.lang-control:not(.is-en) .t-zh {
+    color: #ffffff !important;
+}
+
+/* 状态：当有了 .is-en 时（英文模式），强制让 t-en 变白 */
+.lang-control.is-en .t-en {
+    color: #ffffff !important;
+}
+
+/* 通用内文左侧直线指令 */
+.section-content {
+    border-left: 2px solid var(--accent); /* 线条颜色和粗细 */
+    padding-left: 15px;                  /* 文字和线的距离 */
+    margin-left: 5px;                    /* 线条距离左边的间距 */
+    margin-top: 10px;                    /* 线条距离标题的间距 */
+}
+
+/* 如果你想要线条颜色淡一点，可以改用这个颜色 */
+/* border-left: 2px solid #ddd; */
+        
     </style>
 </head>
 <body>
 
 <div class="lang-control" onclick="toggleLang()">
     <div class="lang-dot"></div>
-    <div class="lang-option">中文</div>
-    <div class="lang-option">EN</div>
+    <div class="lang-option"><b class="t-zh">中</b></div>
+    <div class="lang-option"><b class="t-en">EN</b></div>
 </div>
 
 <div class="main-wrapper">
@@ -272,15 +429,15 @@
         <div class="card">
             <h2 class="lang-zh">语言能力</h2><h2 class="lang-en">Languages</h2>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;">
-                <span style="font-weight:700;"><span class="lang-zh">华语</span><span class="lang-en">Mandarin</span></span>
+                <span style="font-weight:700;"><span class="lang-zh">• 华语</span><span class="lang-en">• Mandarin</span></span>
                 <div class="dot-group"><div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div></div>
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;">
-                <span style="font-weight:700;"><span class="lang-zh">英语</span><span class="lang-en">English</span></span>
+                <span style="font-weight:700;"><span class="lang-zh">• 英语</span><span class="lang-en">• English</span></span>
                 <div class="dot-group"><div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div><div class="dot"></div><div class="dot"></div></div>
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;">
-                <span style="font-weight:700;"><span class="lang-zh">马来语</span><span class="lang-en">Malay</span></span>
+                <span style="font-weight:700;"><span class="lang-zh">• 马来语</span><span class="lang-en">• Malay</span></span>
                 <div class="dot-group"><div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div><div class="dot"></div><div class="dot"></div></div>
             </div>
         </div>
