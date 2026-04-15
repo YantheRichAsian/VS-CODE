@@ -23,37 +23,51 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- 🌍 语言切换器 (已修复颜色与滑动逻辑) --- */
+        /* --- 🌍 1. 切换按钮：精准移动到右上角 --- */
         .lang-control {
-            position: fixed; top: 25px; right: 25px; z-index: 2000;
-            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(15px);
-            padding: 4px; border-radius: 20px; display: flex; width: 130px;
-            border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            position: relative;
+        position: fixed; 
+        top: 30px; 
+        right: 30px; /* 👈 移到最右边 */
+        z-index: 2000;
+        background: rgba(255, 255, 255, 0.9); 
+        backdrop-filter: blur(15px);
+        padding: 4px; 
+        border-radius: 20px; 
+        display: flex; 
+        width: 120px; /* 稍微缩窄一点，更精致 */
+        border: 1px solid rgba(0,0,0,0.08); 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
-        .lang-control::before {
-            content: ''; position: absolute; top: 4px; left: 4px;
-            width: 61px; height: calc(100% - 8px); background: var(--accent);
-            border-radius: 16px; transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1); z-index: 0;
-        }
-        .lang-control.is-en::before { transform: translateX(61px) !important; }
-        .lang-btn {
-            flex: 1; border: none; background: none; padding: 10px 0;
-            cursor: pointer; font-weight: 800; font-size: 12px;
-            position: relative; z-index: 1; color: #888 !important; transition: color 0.3s ease;
-        }
-        .lang-btn.active { color: #ffffff !important; }
 
-        /* --- 🏗️ 布局架构 --- */
-        .main-wrapper {
-            width: 90%; max-width: 1200px; margin: 80px auto;
-            display: flex; flex-direction: column; gap: 40px;
-        }
+        /* --- 🏗️ 2. 电脑版布局优化 --- */
         @media (min-width: 1024px) {
-            .main-wrapper { flex-direction: row; align-items: start; gap: 60px; }
-            .sidebar { width: 380px; position: sticky; top: 60px; }
-            .content-main { flex: 1; }
+        .main-wrapper { 
+        display: grid;
+        grid-template-columns: 350px 1fr; /* 👈 固定左边宽度，右边自适应 */
+        gap: 50px; 
+        margin: 100px auto; /* 增加上下留白，更有呼吸感 */
+        align-items: start;
         }
+    
+        .sidebar {
+        position: sticky;
+        top: 100px; /* 👈 跟着屏幕滑动的丝滑感 */
+        }
+
+        /* 让电脑版的卡片间距更大，显得不那么拥挤 */
+        .card {
+        padding: 50px; 
+        margin-bottom: 40px;
+        }
+}
+
+    /* 针对电脑版的大标题微调 */
+    @media (min-width: 1024px) {
+    .lang-zh h1 { 
+        font-size: 42px; /* 电脑版名字再大一点，霸气 */
+        letter-spacing: 12px;
+    }
+}
 
         /* --- 🎨 卡片通用设计 --- */
         .card {
@@ -272,9 +286,9 @@
             </div>
         </div>
 
-        <a href="https://yantherichasian.github.io/My_Portfolio/" target="_blank" class="btn btn-behance">
-            <span class="lang-zh">查看完整作品集</span>
-            <span class="lang-en" style="display:none;">View Full Portfolio</span>
+        <a href="work.html" class="btn btn-behance">
+            <span class="lang-zh">查看详细作品案例</span>
+            <span class="lang-en">View Detailed Works</span>
         </a>
         
         <div style="margin-top:20px;">
