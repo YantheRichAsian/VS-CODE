@@ -8,8 +8,8 @@
     <style>
         :root {
             --bg-base: #f7f1eb;
-            --accent: #993333; /* 巧克力色 */
-            --brand-pop: #FF8774; /* 浅橘红 */
+            --accent: #993333; 
+            --brand-pop: #FF8774;
             --text-main: #2d2e32;
             --text-sub: #767676;
             --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -22,301 +22,281 @@
             margin: 0; padding: 0;
             -webkit-font-smoothing: antialiased;
         }
-
-        /* --- 🌍 1. 切换按钮：精准移动到右上角 --- */
+        
+        /* 语言切换器 */
         .lang-control {
-        position: fixed; 
-        top: 30px; 
-        right: 30px; /* 👈 移到最右边 */
-        z-index: 2000;
-        background: rgba(255, 255, 255, 0.9); 
-        backdrop-filter: blur(15px);
-        padding: 4px; 
-        border-radius: 20px; 
-        display: flex; 
-        width: 120px; /* 稍微缩窄一点，更精致 */
-        border: 1px solid rgba(0,0,0,0.08); 
-        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: fixed; top: 25px; right: 25px; z-index: 2000;
+            background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(12px);
+            display: flex; align-items: center; padding: 4px; border-radius: 30px;
+            width: 130px; height: 38px; border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); cursor: pointer;
         }
+        .lang-dot {
+            position: absolute; left: 4px; width: 60px; height: 30px;
+            background: var(--accent) !important; border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 1;
+        }
+        .lang-control.is-en .lang-dot { left: 66px; }
+        .lang-option { flex: 1; text-align: center; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #888; z-index: 2; }
+        .lang-control:not(.is-en) .lang-option:first-child, .lang-control.is-en .lang-option:last-child { color: #ffffff !important; }
+        .lang-en { display: none; }
 
-        /* --- 🏗️ 2. 电脑版布局优化 --- */
+        /* 🏗️ 布局比例：左边拉宽 */
+        .main-wrapper { max-width: 1200px; margin: 0 auto; padding: 20px; }
         @media (min-width: 1024px) {
-        .main-wrapper { 
-        display: grid;
-        grid-template-columns: 350px 1fr; /* 👈 固定左边宽度，右边自适应 */
-        gap: 50px; 
-        margin: 100px auto; /* 增加上下留白，更有呼吸感 */
-        align-items: start;
-        }
-    
-        .sidebar {
-        position: sticky;
-        top: 100px; /* 👈 跟着屏幕滑动的丝滑感 */
+            .main-wrapper { display: grid; grid-template-columns: 400px 1fr; gap: 40px; margin: 80px auto; align-items: start; }
+            .sidebar { position: sticky; top: 60px; }
         }
 
-        /* 让电脑版的卡片间距更大，显得不那么拥挤 */
-        .card {
-        padding: 50px; 
-        margin-bottom: 40px;
-        }
-}
-
-    /* 针对电脑版的大标题微调 */
-    @media (min-width: 1024px) {
-    .lang-zh h1 { 
-        font-size: 42px; /* 电脑版名字再大一点，霸气 */
-        letter-spacing: 12px;
-    }
-}
-
-        /* --- 🎨 卡片通用设计 --- */
         .card {
             background: #fff; border-radius: 40px; padding: 40px; margin-bottom: 30px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.03);
             transition: var(--transition);
         }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.05); border-color: var(--brand-pop); }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.05); }
 
-        /* --- 👤 个人信息：左图右字 --- */
-        .profile-box { display: flex; align-items: center; gap: 25px; }
-        .avatar { width: 120px; height: 120px; border-radius: 35px; object-fit: cover; flex-shrink: 0; }
+        /* 👤 个人信息区 */
+        .profile-box { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+        .profile-header { display: flex; align-items: center; gap: 25px; width: 100%; }
+        .avatar { width: 10px; height: 120px; border-radius: 35px; object-fit: cover; }
         
-        /* 🚀 修复：中文名字间距 (精准控制) */
-        .lang-zh h1 { 
-            font-size: 32px; font-weight: 800; 
-            letter-spacing: 8px; /* 这里调间距 */
-            margin: 10px 0 5px 0; padding-left: 8px; /* 补偿右侧空位确保居中感 */
-        }
-        .lang-en h1 { font-size: 28px; font-weight: 800; letter-spacing: 0; margin: 10px 0 5px 0; }
+        .profile-info { flex: 1; }
         .tagline { color: var(--accent); font-weight: 900; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+        .lang-zh h1 { font-size: 32px; font-weight: 800; letter-spacing: 6px; margin: 8px 0; }
+        .lang-en h1 { font-size: 26px; font-weight: 800; margin: 8px 0; }
+        .lang-en h2 { font-size: 20px; font-weight: 800; margin: 8px 0; }
 
-        /* --- 📋 经历与标题 --- */
-        h2 { font-size: 20px; font-weight: 800; margin-bottom: 35px; display: flex; align-items: center; }
+        /* 地标放在照片下 */
+        .location-tag { display: flex; align-items: center; gap: 6px; margin-top: 5px; }
+        .location-icon { width: 16px; height: 16px; }
+        .location-tag span { font-size: 14px; color: #666; font-weight: 500; }
+
+        /* 下载按钮 */
+        .download-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            margin-top: 15px; padding: 8px 18px;
+            background-color: var(--accent); color: #FFFFFF !important;
+            font-size: 13px; font-weight: 700; text-decoration: none; border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        /* 学历颜色分级 */
+        .edu-school { font-size: 18px; color: var(--text-main); font-weight: 800; display: block; }
+        .edu-degree { font-size: 14px; color: var(--accent); font-weight: 700; margin-top: 5px; display: block; }
+
+        /* 通用标题 */
+        h2 { font-size: 20px; font-weight: 800; margin-bottom: 30px; display: flex; align-items: center; }
         h2::after { content: ''; height: 2px; flex: 1; background: linear-gradient(to right, var(--accent), transparent); margin-left: 15px; }
 
-        .experience-item { margin-bottom: 40px; padding-left: 20px; border-left: 2px solid #f0f0f0; }
-        .experience-item b { font-size: 17px; display: block; margin-bottom: 8px; }
-        .experience-item span { color: var(--brand-pop); font-size: 12px; font-weight: 800; letter-spacing: 1px; }
-        .experience-item ul { font-size: 13px; color: #666; padding-left: 18px; margin-top: 10px; }
+        .item { margin-bottom: 35px; padding-left: 20px; border-left: 2px solid #f0f0f0; }
+        .item b { font-size: 17px; display: block; margin-bottom: 8px; }
+        .item span { color: var(--accent); font-size: 13px; font-weight: 700; display: block; margin-bottom: 5px; }
+        .item ul { font-size: 14px; color: #555; padding-left: 18px; margin-top: 10px; line-height: 1.6; }
 
-        /* --- 🎓 教育背景 (修复上下间距与字体) --- */
-        .edu-item { margin-bottom: 50px; padding-left: 20px; border-left: 2px solid #f0f0f0; }
-        .edu-item b { 
-            font-size: 16px; display: block; 
-            margin-bottom: 10px; /* 🚀 学校和文凭的间距 */
-        }
-        .edu-item p { 
-            color: var(--accent); font-weight: 700; 
-            font-size: 13px; /* 🚀 文凭字体小一点 */
-            margin: 0; letter-spacing: 0.8px; 
-        }
-
-        /* --- 🎯 技能网格 (左2右2) --- */
-        .skill-group { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-        .skill-tag {
-            background: #fdfaf7; padding: 15px; border-radius: 18px;
-            font-size: 13px; font-weight: 700; text-align: center; border: 1px solid rgba(0,0,0,0.03);
-            transition: var(--transition);
-        }
-        .skill-tag:hover { background: var(--brand-pop); color: white; transform: translateY(-3px); }
-
-        /* --- 📊 语言进度条 (圆点) --- */
+        /* 技能展示 */
+        .skill-group { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .skill-tag { background: #fdfaf7; padding: 12px; border-radius: 15px; font-size: 13px; font-weight: 700; text-align: center; border: 1px solid rgba(0,0,0,0.03); }
+        
         .dot-group { display: flex; gap: 6px; }
         .dot { width: 10px; height: 10px; border-radius: 50%; background: #eee; }
         .dot.fill { background: var(--accent); }
 
-        /* --- 🔗 按钮 --- */
-        /* --- 🔗 链接格子：增加卡片式选中效果 --- */
-.btn { 
-    display: block; 
-    text-align: center; 
-    padding: 22px; 
-    border-radius: 30px; /* 调大圆角，更像卡片 */
-    font-weight: 800; 
-    text-decoration: none; 
-    margin-top: 20px; 
-    transition: var(--transition); /* 使用全局 0.5s 平滑过渡 */
-    border: 1px solid rgba(0,0,0,0.03);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.02); /* 初始微阴影 */
-    cursor: pointer;
-}
-
-/* 🚀 关键：和其他区块一样的选中（悬停）效果 */
-.btn:hover {
-    transform: translateY(-8px); /* 向上浮动 */
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* 投影加深 */
-    filter: brightness(1.1); /* 稍微变亮，增加反馈感 */
-}
-
-/* 按钮各自的颜色定义 */
-.btn-wa { background: var(--brand-pop); color: white; border: none; }
-.btn-mail { background: var(--text-main); color: white; border: none; }
-.btn-behance { 
-    background: white; 
-    color: var(--text-main); 
-    border: 1px solid rgba(0,0,0,0.1); 
-}
-
-/* 针对 Behance 按钮悬停时，边框变色 */
-.btn-behance:hover {
-    border-color: var(--brand-pop);
-}
-
-/* 贴在 <style> 标签结束前即可 */
-.lang-zh .tagline {
-    padding-left: 10px; /* 数值越大，前面的空格/位移就越多 */
-}
-
+        .btn { display: block; text-align: center; padding: 18px; border-radius: 30px; font-weight: 800; text-decoration: none; margin-top: 15px; }
+        .btn-wa { background: var(--brand-pop); color: white; }
+        .btn-mail { background: var(--text-main); color: white; }
+        .btn-behance { background: white; color: var(--text-main); border: 1px solid #ddd; }
     </style>
 </head>
 <body>
 
-<div class="lang-control">
-    <button id="zh-btn" class="lang-btn active" onclick="setLang('zh')">中文</button>
-    <button id="en-btn" class="lang-btn" onclick="setLang('en')">EN</button>
+<div class="lang-control" onclick="toggleLang()">
+    <div class="lang-dot"></div>
+    <div class="lang-option">中文</div>
+    <div class="lang-option">EN</div>
 </div>
 
 <div class="main-wrapper">
     <div class="sidebar">
         <div class="card profile-box">
-            <img src="https://i.postimg.cc/kMbGhf1W/IMG-20260321-012520-edit-411287862878677.jpg" class="avatar">
-            <div class="profile-info">
-                <div class="lang-zh">
-                    <div class="tagline">多媒体设计师</div>
-                    <h1>郑炳彦</h1>
-                    <p style="font-size: 13px; color: #666; padding-left: 8px;">专注于品牌视觉与视频创作。</p>
-                </div>
-                <div class="lang-en" style="display:none;">
-                    <div class="tagline">Multimedia Designer</div>
-                    <h1>Tay Pin Yan</h1>
-                    <p style="font-size: 13px; color: #666;">Focus on branding & video editing.</p>
-                </div>
+    <div class="profile-header" style="align-items: flex-start;"> <img src="https://i.postimg.cc/kMbGhf1W/IMG-20260321-012520-edit-411287862878677.jpg" 
+             class="avatar" style="width: 180px; height: 180px; flex-shrink: 0;"> <div class="profile-info" style="min-width: 200px; padding-top: 10px;">
+            <div class="lang-zh">
+                <div class="tagline">多媒体设计师</div>
+                <h1 style="margin-bottom: 30px;">郑炳彦</h1>
+            </div>
+            <div class="lang-en">
+                <div class="tagline">Multimedia</div><h1 style="margin-bottom: 15px;">
+                <div class="tagline">Designer</div>
+                <h2 style="margin-bottom: 30px;">Tay Pin Yan</h2>
+            </div>
+            
+            <a href="Resume_Tay_Pin_Yan.pdf" download="郑炳彦_Resume" class="download-btn" style="margin-top: 0;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span class="lang-zh">下载 PDF</span><span class="lang-en">Download</span>
+            </a>
+
+            <div style="font-size: 11px; color: #993333; font-weight: bold; margin-top: 8px;">
+                <span class="lang-zh">A4 履历表在这里 ↑↑</span>
+                <span class="lang-en">A4 Resume is here ↑↑</span>
+            </div>
+        </div>
+    </div>
+
+<a href="work.html" class="btn btn-behance" style="padding: 15px 117px;">
+    <span class="lang-zh">查看作品集</span>
+    <span class="lang-en">Portfolio</span>
+</a>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:-15px;">
+            <a href="https://wa.me/601169281341" target="_blank" class="btn btn-wa" style="padding: 15px 33px;"> 
+            <span class="lang-zh">WhatsApp</span>
+            <span class="lang-en">WhatsApp</span></a>
+            <a href="mailto:yan199771@gmail.com" class="btn btn-mail" style="padding: 15px 33px;"> 
+            <span class="lang-zh">Email</span>
+            <span class="lang-en">Email</span></a>
+        </div>
+        
+    <div class="location-tag" style="display: flex; gap: 15px; margin-top: 20px;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+            <svg class="location-icon" viewBox="0 0 24 24" fill="none" style="width: 16px; height: 16px;">
+                <path d="M12 13.5C13.6569 13.5 15 12.1569 15 10.5C15 8.84315 13.6569 7.5 12 7.5C10.3431 7.5 9 8.84315 9 10.5C9 12.1569 10.3431 13.5 12 13.5Z" fill="#993333"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C14 18 20 15.4183 20 10.5C20 6.08172 16.4183 2.5 12 2.5C7.58172 2.5 4 6.08172 4 10.5C4 15.4183 10 18 12 22ZM12 15.5C14.7614 15.5 17 13.2614 17 10.5C17 7.73858 14.7614 5.5 12 5.5C9.23858 5.5 7 7.73858 7 10.5C7 13.2614 9.23858 15.5 12 15.5Z" fill="#993333"/>
+            </svg>
+            <span class="lang-zh">柔佛，麻坡</span><span class="lang-en">Muar, Johor</span>
+        </div>
+        
+        <div style="display: flex; align-items: center; gap: 6px;">
+            <svg viewBox="0 0 24 24" fill="#993333" style="width: 16px; height: 16px;">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            <span style="font-size: 14px; color: #666; font-weight: 500;">yan199771@gmail.com</span>
+        </div>
+    </div>
+</div>
+
+        <div class="card">
+            <h2 class="lang-zh">当前专长</h2><h2 class="lang-en">Specialization</h2>
+            <div class="item" style="border-left-color: var(--accent);">
+                <div class="lang-zh"><b>商业品牌与包装设计</b><p style="font-size:13px; color:#666;">专注于视觉一致性、标签设计及印刷应用。</p></div>
+                <div class="lang-en"><b>Branding & Packaging</b><p style="font-size:13px; color:#666;">Focus on visual identity and print production.</p></div>
+            </div>
+            <div class="item" style="border-left-color: var(--accent); margin-bottom:0;">
+                <div class="lang-zh"><b>数码内容创作</b><p style="font-size:13px; color:#666;">具备短视频剪辑及社交媒体图文制作能力。</p></div>
+                <div class="lang-en"><b>Digital Content</b><p style="font-size:13px; color:#666;">Proficient in video editing and social media visuals.</p></div>
             </div>
         </div>
 
         <div class="card">
-            <h2 class="lang-zh">专业技能</h2><h2 class="lang-en" style="display:none;">Software</h2>
+            <h2 class="lang-zh">专业技能</h2><h2 class="lang-en">Software</h2>
             <div class="skill-group">
-                <div class="skill-tag">Illustrator</div>
-                <div class="skill-tag">Photoshop</div>
-                <div class="skill-tag">CapCut</div>
-                <div class="skill-tag">Canva</div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2 class="lang-zh">语言能力</h2><h2 class="lang-en" style="display:none;">Languages</h2>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <span class="lang-zh">华语</span><span class="lang-en" style="display:none;">Chinese</span>
-                <div class="dot-group"><div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div></div>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <span class="lang-zh">英语</span><span class="lang-en" style="display:none;">English</span>
-                <div class="dot-group"><div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div><div class="dot"></div><div class="dot"></div></div>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span class="lang-zh">马来语</span><span class="lang-en" style="display:none;">Malay</span>
-                <div class="dot-group"><div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div><div class="dot"></div><div class="dot"></div></div>
+                <div class="skill-tag">Illustrator</div><div class="skill-tag">Photoshop</div>
+                <div class="skill-tag">CapCut</div><div class="skill-tag">Canva</div>
             </div>
         </div>
     </div>
 
     <div class="content-main">
         <div class="card">
-            <h2 class="lang-zh">当前专长</h2><h2 class="lang-en" style="display:none;">Specialization</h2>
-            <div class="lang-zh">
-                <p><b>商业品牌与包装设计</b><br><small style="color:#777;">专注于视觉一致性、标签设计及印刷应用。</small></p>
-                <p><b>数码内容创作</b><br><small style="color:#777;">具备短视频剪辑及社交媒体图文制作能力。</small></p>
+            <h2 class="lang-zh">个人简介</h2><h2 class="lang-en">Summary</h2>
+            <p class="lang-zh" style="font-size:15px;line-height:1.8;color:#444;">逾 5 年多媒体设计经验，工作涵盖宣传视觉、包装排版及社媒内容。熟悉数码营销实战与印刷流程，能够独立完成从创意构思到成品制作的各项设计任务。</p>
+            <p class="lang-en" style="font-size:15px;line-height:1.8;color:#444;">Over 5 years of multimedia design experience, covering promotional visuals, packaging, and social media. Familiar with digital marketing and print processes.</p>
+        </div>
+
+        <div class="card">
+            <h2 class="lang-zh">工作经历</h2><h2 class="lang-en">Experience</h2>
+            <div class="item">
+                <div class="lang-zh"><b>贷款顾问公司 | 8 个月 (2025)</b><span>社媒经营与视觉广告</span>
+                    <ul>
+                        <li>创作线上活动的宣传视觉稿</li>
+                        <li>经营社交媒体宣传内容</li>
+                        <li>使用 CapCut 制作短视频营销广告</li>
+                    </ul>
+                </div>
+                <div class="lang-en"><b>Lending Consultant | 8 Mth (2025)</b><span>Social Media & Visual Ads</span>
+                    <ul>
+                        <li>Created visual drafts for online campaigns</li>
+                        <li>Managed social media promotional content</li>
+                        <li>Produced video ads via CapCut</li>
+                    </ul>
+                </div>
             </div>
-            <div class="lang-en" style="display:none;">
-                <p><b>Commercial Branding</b><br><small style="color:#777;">Consistency, label design, and print production.</small></p>
-                <p><b>Digital Content</b><br><small style="color:#777;">Video editing (CapCut) and social media graphics.</small></p>
+            <div class="item">
+                <div class="lang-zh"><b>保健品 brand 营销 | 2+ 年</b><span>设计与数码内容执行</span>
+                    <ul>
+                        <li>设计产品营销宣传资料</li>
+                        <li>管理 Facebook 宣传贴文与视觉</li>
+                        <li>协助品牌呈现与营销活动</li>
+                    </ul>
+                </div>
+                <div class="lang-en"><b>Health Brand Marketing | 2+ Years</b><span>Design & Digital Executive</span>
+                    <ul>
+                        <li>Designed product marketing materials</li>
+                        <li>Managed Facebook promotional posts & visuals</li>
+                        <li>Assisted in brand presentation and campaigns</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="item">
+                <div class="lang-zh"><b>印刷与包装公司 | 3 年</b><span>平面设计师 (麻坡)</span>
+                    <ul>
+                        <li>设计包装标签与产品贴纸</li>
+                        <li>准备用于印刷生产的排版文件</li>
+                        <li>与印刷生产团队紧密配合</li>
+                    </ul>
+                </div>
+                <div class="lang-en"><b>Printing & Packaging | 3 Years</b><span>Graphic Designer (Muar)</span>
+                    <ul>
+                        <li>Designed packaging labels and stickers</li>
+                        <li>Prepared layout files for print production</li>
+                        <li>Collaborated closely with the production team</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
         <div class="card">
-            <h2 class="lang-zh">工作经历</h2><h2 class="lang-en" style="display:none;">Experience</h2>
-            <div class="experience-item">
-                <div class="lang-zh">
-                    <b>贷款顾问公司 | 2025</b>
-                    <span>社媒经营与视觉广告</span>
-                    <ul><li>经营 FB/IG 内容，使用 CapCut 制作短视频广告</li></ul>
-                </div>
-                <div class="lang-en" style="display:none;">
-                    <b>Lending Consultant | 2025</b>
-                    <span>Social Media & Visual Ads</span>
-                    <ul><li>Managed FB/IG content, produced video ads via CapCut</li></ul>
-                </div>
+            <h2 class="lang-zh">教育背景</h2><h2 class="lang-en">Education</h2>
+            <div class="item" style="border:none; padding-left:0;">
+                <div class="lang-zh"><b class="edu-school">Divo Multimedia Design College</b><span class="edu-degree">多媒体设计文凭 (Diploma)</span></div>
+                <div class="lang-en"><b class="edu-school">Divo Multimedia Design College</b><span class="edu-degree">Diploma in Multimedia Design</span></div>
             </div>
-            <div class="experience-item">
-                <div class="lang-zh">
-                    <b>保健品品牌营销 | 2+ 年</b>
-                    <span>设计与数码内容执行</span>
-                    <ul><li>主导产品营销视觉呈现，协助品牌形象升级</li></ul>
-                </div>
-                <div class="lang-en" style="display:none;">
-                    <b>Health Product Marketing | 2+ Years</b>
-                    <span>Design & Digital Executive</span>
-                    <ul><li>Led product marketing visuals and brand identity upgrades</li></ul>
-                </div>
+            <div class="item" style="border:none; padding-left:0; margin-bottom:0;">
+                <div class="lang-zh"><b class="edu-school">麻坡中化中学</b><span class="edu-degree">独中统考 (UEC) 毕业证明</span></div>
+                <div class="lang-en"><b class="edu-school">Chung Hwa High School Muar</b><span class="edu-degree">UEC Certificate</span></div>
             </div>
         </div>
 
         <div class="card">
-            <h2 class="lang-zh">教育背景</h2><h2 class="lang-en" style="display:none;">Education</h2>
-            <div class="edu-item">
-                <div class="lang-zh">
-                    <b>Divo Multimedia Design College</b>
-                    <p>多媒体设计文凭 (Diploma)</p>
-                </div>
-                <div class="lang-en" style="display:none;">
-                    <b>Divo Multimedia Design College</b>
-                    <p>Diploma in Multimedia Design</p>
-                </div>
+            <h2 class="lang-zh">语言能力</h2><h2 class="lang-en">Languages</h2>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;">
+                <span style="font-weight:700;"><span class="lang-zh">华语</span><span class="lang-en">Mandarin</span></span>
+                <div class="dot-group"><div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div></div>
             </div>
-            <div class="edu-item" style="border:none; margin-bottom:0;">
-                <div class="lang-zh">
-                    <b>麻坡中化中学 (Chung Hwa High School Muar)</b>
-                    <p>独中统考 (UEC) 毕业证明</p>
-                </div>
-                <div class="lang-en" style="display:none;">
-                    <b>Chung Hwa High School Muar</b>
-                    <p>UEC Certificate</p>
-                </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;">
+                <span style="font-weight:700;"><span class="lang-zh">英语</span><span class="lang-en">English</span></span>
+                <div class="dot-group"><div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div><div class="dot"></div><div class="dot"></div></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-weight:700;"><span class="lang-zh">马来语</span><span class="lang-en">Malay</span></span>
+                <div class="dot-group"><div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div><div class="dot"></div><div class="dot"></div></div>
             </div>
         </div>
 
-        <a href="work.html" class="btn btn-behance">
-            <span class="lang-zh">查看详细作品案例</span>
-            <span class="lang-en">View Detailed Works</span>
-        </a>
-        
-        <div style="margin-top:20px;">
-            <a href="https://wa.me/601169281341" target="_blank" class="btn btn-wa">WhatsApp Me</a>
-            <a href="mailto:yan199771@gmail.com" class="btn btn-mail">Email Me</a>
-        </div>
     </div>
 </div>
 
 <script>
-    function setLang(lang) {
-        const control = document.querySelector('.lang-control');
-        const zhBtn = document.getElementById('zh-btn');
-        const enBtn = document.getElementById('en-btn');
-        
-        if (lang === 'zh') {
-            control.classList.remove('is-en');
-            zhBtn.classList.add('active');
-            enBtn.classList.remove('active');
-        } else {
-            control.classList.add('is-en');
-            enBtn.classList.add('active');
-            zhBtn.classList.remove('active');
-        }
-
-        document.querySelectorAll('.lang-zh').forEach(el => el.style.display = (lang === 'zh') ? 'block' : 'none');
-        document.querySelectorAll('.lang-en').forEach(el => el.style.display = (lang === 'en') ? 'block' : 'none');
+    let currentLang = 'zh';
+    function toggleLang() {
+        currentLang = (currentLang === 'zh') ? 'en' : 'zh';
+        document.querySelector('.lang-control').classList.toggle('is-en', currentLang === 'en');
+        document.querySelectorAll('.lang-zh').forEach(el => el.style.display = (currentLang === 'zh') ? 'block' : 'none');
+        document.querySelectorAll('.lang-en').forEach(el => el.style.display = (currentLang === 'en') ? 'block' : 'none');
     }
+    window.onload = () => { document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'none'); };
 </script>
 </body>
 </html>
