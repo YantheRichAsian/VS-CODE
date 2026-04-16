@@ -68,11 +68,23 @@
         }
 
         .card {
-            background: #fff; border-radius: 40px; padding: 40px; margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.03);
-            transition: var(--transition);
-        }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.05); }
+    background: #fff; 
+    border-radius: 40px; 
+    padding: 40px; 
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02); 
+    /* 初始边框设为 2px，防止 hover 时因为边框变粗导致内容抖动 */
+    border: 2px solid rgba(0,0,0,0.03); 
+    transition: var(--transition);
+}
+
+.card:hover { 
+    transform: translateY(-10px); 
+    /* 1. 追加原本没有的阴影深度 */
+    box-shadow: 0 30px 60px rgba(0,0,0,0.05); 
+    /* 2. 关键：追加亮橙色边框 (使用你 root 里的变量 --brand-pop) */
+    border-color: var(--brand-pop) !important; 
+}
 
                 /* 中文名：保持 h1 */
 .lang-zh h1 { 
@@ -261,7 +273,138 @@
 
 /* 如果你想要线条颜色淡一点，可以改用这个颜色 */
 /* border-left: 2px solid #ddd; */
-        
+
+/* 1. 只要链接里包含 whatsapp 的按钮 */
+a[href*="wa.me"]:hover, 
+a[href*="whatsapp"]:hover,
+.btn-whatsapp:hover {
+    background-color: #128C7E !important; /* 强制变深绿 */
+    filter: brightness(0.8);              /* 强制把亮度调暗 20% */
+    transform: scale(0.95) translateY(2px) !important;
+    box-shadow: inset 0 4px 8px rgba(0,0,0,0.2) !important;
+}
+
+/* 2. 只要链接里包含 mailto 的按钮 */
+a[href*="mailto"]:hover,
+.btn-email:hover {
+    background-color: #333333 !important; /* 强制变深黑灰 */
+    filter: brightness(0.8);              /* 强制调暗 */
+    transform: scale(0.95) translateY(2px) !important;
+    box-shadow: inset 0 4px 8px rgba(0,0,0,0.2) !important;
+}
+
+/* 3. 作品集按钮 (如果你的链接包含 behance 或 work) */
+a[href*="work.html"]:hover,
+a[href*="behance"]:hover,
+.btn-behance:hover {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    transform: scale(0.95) translateY(2px) !important;
+}
+
+/* 4. 强制所有按钮在 Hover 时，内部文字变白 */
+a[href*="wa.me"]:hover *, 
+a[href*="mailto"]:hover *,
+a[href*="work"]:hover * {
+    color: #ffffff !important;
+}
+
+/* 4. 强制所有按钮文字在 Hover 时必须是白色 */
+.btn-whatsapp:hover span, .btn-email:hover span, .btn-behance:hover span {
+    color: #ffffff !important;
+}
+
+/* 通用：让所有按钮变色都有丝滑动画 */
+.btn {
+    transition: var(--transition) !important;
+}
+
+/* 1. Email 按钮：初始色底（改为高级碳灰，避开死沉的纯黑） */
+.btn-mail {
+    background-color: #555555 !important; /* 初始灰色，更有质感 */
+    color: #ffffff !important;           /* 文字保持白色 */
+    border: none !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. Email 按钮：Hover 状态（变深、变沉） */
+.btn-mail:hover {
+    background-color: #2d2e32 !important; /* 变成你简历的深色主调 */
+    transform: scale(0.95) translateY(2px) !important; /* 往下沉的感觉 */
+    box-shadow: inset 0 4px 10px rgba(0,0,0,0.3) !important; /* 内部阴影 */
+}
+
+/* 3. 顺便微调一下旁边的 WhatsApp 按钮，确保它们对齐 */
+.btn-wa {
+    background-color: #25D366 !important; /* WhatsApp 标准绿 */
+    color: #ffffff !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-wa:hover {
+    background-color: #128C7E !important; /* Hover 变深绿 */
+    transform: scale(0.95) translateY(2px) !important;
+}
+
+/* 1. 作品集按钮：初始状态（白底 + 橙色边框 + 黑字） */
+.btn-behance {
+    background-color: #ffffff !important;   /* 纯白底 */
+    color: #2d2e32 !important;              /* 黑字 */
+    border: 2px solid #FF8774 !important;   /* 2px 橙色边框 (使用你的品牌色) */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    font-weight: bold;
+}
+
+/* 2. 作品集按钮：Hover 状态（变成实色橙色底，字变白） */
+.btn-behance:hover {
+    background-color: #FF8774 !important;   /* 背景填满橙色 */
+    color: #ffffff !important;              /* 文字变白色 */
+    border-color: #FF8774 !important;       /* 边框颜色保持一致 */
+    transform: scale(0.95) translateY(2px) !important; /* 沉下去的手感 */
+    box-shadow: 0 10px 20px rgba(255, 135, 116, 0.2) !important; /* 淡淡的橙色光晕 */
+}
+
+
+/* --- 放在 <style> 标签最底部 --- */
+
+/* 1. 默认把所有语言内容藏起来 */
+.lang-zh, .lang-en {
+    display: none; 
+}
+
+/* 2. 只有当被 JS 加上 .is-visible 类名时才显示 */
+.lang-zh.is-visible, .lang-en.is-visible {
+    display: block !important;
+}
+
+/* 1. 基础布局：只要是标题，就准备好画线 */
+h2.lang-zh, h2.lang-en {
+    align-items: center !important;
+    gap: 15px !important;
+    border-bottom: none !important;
+    width: 100% !important;
+    /* 初始设置为 display: none，JS 会控制它显示 */
+}
+
+/* 2. 关键：当标题被显示时 (不管它是 block 还是 flex)，强制它变成 flex 模式来画线 */
+h2.lang-zh:not([style*="display: none"]), 
+h2.lang-en:not([style*="display: none"]) {
+    display: flex !important; /* 只要 JS 没说它是 none，它就是 flex */
+}
+
+/* 3. 画出那根完美的橙色横线 */
+h2.lang-zh:not([style*="display: none"])::after, 
+h2.lang-en:not([style*="display: none"])::after {
+    content: "" !important;
+    flex: 1 !important;
+    height: 2px !important;
+    background: linear-gradient(to right, #FF8774, transparent) !important;
+    border-radius: 10px;
+    opacity: 0.6;
+}
     </style>
 </head>
 <body>
@@ -303,21 +446,28 @@
         </div>
     </div>
 
-<a href="work.html" class="btn btn-behance" style="padding: 15px 117px;">
-    <span class="lang-zh">查看作品集</span>
+<a href="work.html" class="btn btn-behance" style="padding: 13px 0; width: 100%; text-align: center; display: block; box-sizing: border-box;">
+    <span class="lang-zh">作品集</span>
     <span class="lang-en">Portfolio</span>
 </a>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:-15px;">
-            <a href="https://wa.me/601169281341" target="_blank" class="btn btn-wa" style="padding: 15px 33px;"> 
-            <span class="lang-zh">WhatsApp</span>
-            <span class="lang-en">WhatsApp</span></a>
-            <a href="mailto:yan199771@gmail.com" class="btn btn-mail" style="padding: 15px 33px;"> 
-            <span class="lang-zh">Email</span>
-            <span class="lang-en">Email</span></a>
-        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; margin-top: -10px;">
+    
+    <a href="https://wa.me/601169281341" target="_blank" class="btn btn-wa" 
+       style="padding: 15px 0; width: 100%; text-align: center; display: block; box-sizing: border-box;"> 
+        <span class="lang-zh">WhatsApp</span>
+        <span class="lang-en">WhatsApp</span>
+    </a>
+
+    <a href="mailto:yan199771@gmail.com" class="btn btn-mail" 
+       style="padding: 15px 0; width: 100%; text-align: center; display: block; box-sizing: border-box;"> 
+        <span class="lang-zh">Email</span>
+        <span class="lang-en">Email</span>
+    </a>
+    
+</div>
         
     <div class="location-tag" style="display: flex; gap: 15px; margin-top: 20px;">
-        <div style="display: flex; align-items: center; gap: 6px;">
+        <div style="display: flex; align-items: center; gap: 6px; white-space: nowrap;">
             <svg class="location-icon" viewBox="0 0 24 24" fill="none" style="width: 16px; height: 16px;">
                 <path d="M12 13.5C13.6569 13.5 15 12.1569 15 10.5C15 8.84315 13.6569 7.5 12 7.5C10.3431 7.5 9 8.84315 9 10.5C9 12.1569 10.3431 13.5 12 13.5Z" fill="#993333"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C14 18 20 15.4183 20 10.5C20 6.08172 16.4183 2.5 12 2.5C7.58172 2.5 4 6.08172 4 10.5C4 15.4183 10 18 12 22ZM12 15.5C14.7614 15.5 17 13.2614 17 10.5C17 7.73858 14.7614 5.5 12 5.5C9.23858 5.5 7 7.73858 7 10.5C7 13.2614 9.23858 15.5 12 15.5Z" fill="#993333"/>
@@ -325,7 +475,7 @@
             <span class="lang-zh">柔佛，麻坡</span><span class="lang-en">Muar, Johor</span>
         </div>
         
-        <div style="display: flex; align-items: center; gap: 6px;">
+        <div style="display: flex; align-items: center; gap: 6px; padding-left: 29px;">
             <svg viewBox="0 0 24 24" fill="#993333" style="width: 16px; height: 16px;">
                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
             </svg>
@@ -448,12 +598,26 @@
 <script>
     let currentLang = 'zh';
     function toggleLang() {
-        currentLang = (currentLang === 'zh') ? 'en' : 'zh';
-        document.querySelector('.lang-control').classList.toggle('is-en', currentLang === 'en');
-        document.querySelectorAll('.lang-zh').forEach(el => el.style.display = (currentLang === 'zh') ? 'block' : 'none');
-        document.querySelectorAll('.lang-en').forEach(el => el.style.display = (currentLang === 'en') ? 'block' : 'none');
-    }
-    window.onload = () => { document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'none'); };
+    currentLang = (currentLang === 'zh') ? 'en' : 'zh';
+    document.querySelector('.lang-control').classList.toggle('is-en', currentLang === 'en');
+    document.querySelectorAll('.lang-zh').forEach(el => el.style.display = (currentLang === 'zh') ? 'block' : 'none');
+    document.querySelectorAll('.lang-en').forEach(el => el.style.display = (currentLang === 'en') ? 'block' : 'none');
+}
+
+    // 初始化显示
+    window.onload = () => {
+        // 确保初始状态正确
+        document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.lang-zh').forEach(el => el.style.display = 'block');
+    };
 </script>
 </body>
+
+<footer style="margin-top: 50px; padding-bottom: 30px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+    <div style="width: 100%; height: 2px; background: linear-gradient(to right, transparent, #FF8774, transparent); opacity: 0.5;"></div>
+    
+    <p style="font-size: 12px; color: #767676; margin-top: 15px; letter-spacing: 1px;">
+        © 2026 TAY PIN YAN. ALL RIGHTS RESERVED.
+    </p>
+</footer>
 </html>
